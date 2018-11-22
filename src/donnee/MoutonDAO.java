@@ -13,31 +13,30 @@ import modele.Mouton;
 
 public class MoutonDAO {
 
-	public void ajouterMouton(Mouton mouton)
+	protected DBCollection listeMoutons = null;
+	
+	public MoutonDAO()
 	{
 		MongoClient mongo = new MongoClient();
 		DB bergerie = mongo.getDB("bergerie");
-		DBCollection listeMoutons = bergerie.getCollection("mouton");		
-		
+		listeMoutons = bergerie.getCollection("mouton");		
+
+		//		mongo.close();
+	}
+	
+	public void ajouterMouton(Mouton mouton)
+	{
 		DBObject moutonMongo = new BasicDBObject();
 		moutonMongo.putAll(mouton.exporterHash());
-		listeMoutons.insert(moutonMongo);
-		
-		mongo.close();
+		listeMoutons.insert(moutonMongo);		
 	}
 	
 	public Mouton trouverMoutonSelonNom(String nom)
 	{
-		MongoClient mongo = new MongoClient();
-		DB bergerie = mongo.getDB("bergerie");
-		DBCollection listeMoutons = bergerie.getCollection("mouton");		
-		
 		DBObject critereMouton = new BasicDBObject("nom",nom);
 		DBCursor pointeurMouton = listeMoutons.find(critereMouton);
 		Map champsMoutonTrouve = pointeurMouton.one().toMap();
 		Mouton moutonTrouve = new Mouton(champsMoutonTrouve);
-		
-		mongo.close();	
 		
 		return moutonTrouve;
 	}
