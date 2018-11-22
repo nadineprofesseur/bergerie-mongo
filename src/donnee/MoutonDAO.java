@@ -41,4 +41,9 @@ public class MoutonDAO {
 		return moutonTrouve;
 	}
 	
+	public void effacerMoutonSelonNom(String nom)
+	{
+		DBObject critereMouton = new BasicDBObject("nom",nom);
+		this.listeMoutons.remove(critereMouton);		
+	}
 }

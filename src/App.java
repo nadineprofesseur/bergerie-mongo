@@ -12,12 +12,13 @@ public class App {
 		System.out.println("Allo Mongo");
 		MoutonDAO accesseurMouton = new MoutonDAO();
 		
-		Mouton mouton = new Mouton("Coucou", "joyeux", 10);
+		Mouton mouton = new Mouton("Foufou", "fou", 10);
 		accesseurMouton.ajouterMouton(mouton);
+				
+		Mouton moutonTrouve = accesseurMouton.trouverMoutonSelonNom("Foufou");
+		System.out.println("Le mouton Foufou est " + moutonTrouve.getDescription());
 		
-		Mouton moutonTrouve = accesseurMouton.trouverMoutonSelonNom("Coucou");
-		System.out.println("Le mouton Coucou est " + moutonTrouve.getDescription());
-		
+		accesseurMouton.effacerMoutonSelonNom("Foufou");
 
 	}
 
