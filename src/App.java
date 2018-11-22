@@ -27,13 +27,8 @@ public class App {
 		Mouton mouton = new Mouton("Dodo", "calme", 10);
 		accesseurMouton.ajouterMouton(mouton);
 		
-		/*
-		DBObject critereMouton = new BasicDBObject("nom","Yoyo");
-		DBCursor pointeurMouton = listeMoutons.find(critereMouton);
-		Map champsMoutonTrouve = pointeurMouton.one().toMap();
-		Mouton moutonTrouve = new Mouton(champsMoutonTrouve);
-		System.out.println("Le mouton Yoyo est " + moutonTrouve.getDescription());
-		*/
+		Mouton moutonTrouve = accesseurMouton.trouverMoutonSelonNom("Dodo");
+		System.out.println("Le mouton Dodo est " + moutonTrouve.getDescription());
 		
 
 	}
