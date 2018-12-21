@@ -15,10 +15,10 @@ public class App {
 		Mouton mouton = new Mouton("Foufou", "fou", 10);
 		accesseurMouton.ajouterMouton(mouton);
 				
-		Mouton moutonTrouve = accesseurMouton.trouverMoutonSelonNom("Foufou");
-		System.out.println("Le mouton Foufou est " + moutonTrouve.getDescription());
+		//Mouton moutonTrouve = accesseurMouton.trouverMoutonSelonNom("Foufou");
+		//System.out.println("Le mouton Foufou est " + moutonTrouve.getDescription());
 		
-		accesseurMouton.effacerMoutonSelonNom("Foufou");
+		//accesseurMouton.effacerMoutonSelonNom("Foufou");
 
 	}
 
